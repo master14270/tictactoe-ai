@@ -1,10 +1,16 @@
 import sys
+import configparser
 
-# this is the file that will store all of our constants. Shorthand is 'c'.
+# This is the configuration file
+myConfig = configparser.ConfigParser()
+myConfig.read("settings.ini")
 
-BSIZE = 3  # number of tiles (for both rows and columns)
-MAX_DEPTH = 9  # the maximum search depth. on standard 3 x 3 board, should be set to 9.
+# number of tiles (for both rows and columns)
+BSIZE = int(myConfig['Constants']['board_size'])
+
+# the maximum search depth. on standard 3 x 3 board, should be set to 9.
 # however if you increase the board size, you will need to decrease the search depth.
+MAX_DEPTH = int(myConfig['Constants']['max_search_depth'])
 
 # making the board.
 board = [0] * BSIZE
@@ -12,7 +18,7 @@ bdimm = len(board)
 for _ in range(bdimm):
     board[_] = [0] * BSIZE
 
-display_w = display_h = 600  # size of the display
+display_w = display_h = int(myConfig['Constants']['display_size'])  # size of the display
 cube_size = display_w / BSIZE  # the size of each cube
 
 # infinities used for minimax

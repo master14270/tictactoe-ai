@@ -8,6 +8,8 @@ x_rect, o_rect = draw_menu(screen, display_w)
 pygame.display.flip()
 menu = True
 bot_is_x = True
+
+print("Choose either x's or o's")
 while menu:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
